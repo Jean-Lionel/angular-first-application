@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { IHotel } from "./hotel";
 
 @Component({
     selector: 'app-hotel-list',
@@ -14,7 +15,7 @@ export class AppHotelListComponent{
     this.showBadge = !this.showBadge;
   }
 
-  public hotels: any[] = [
+  public hotels: IHotel[] = [
     {
       hotelId: 1,
       hotelName: "Buea sweet life",
@@ -46,6 +47,14 @@ export class AppHotelListComponent{
       "price": 135.12,
       "imageUrl": "assets/img/window.jpg",
       "rating": 2.5
-    }
+    },
+    {
+      "hotelId": 5,
+      "hotelName": "Random House",
+      "description": "Magnifique cadre pour votre séjour",
+      "price": 135.12,
+      "imageUrl": "https://picsum.photos/200/300",
+      "rating": 2.5
+    },
   ];
 }
