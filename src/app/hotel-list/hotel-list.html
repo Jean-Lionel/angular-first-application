@@ -1,0 +1,16 @@
+<div class="container">
+  <h3 *ngIf="hotels && hotels.length > 0">{{title}}</h3>
+   <button (click)="toogleShowBug()" class="btn btn-primary">{{showBadge ? 'Cacher' : 'Afficher'}}  Nouveau</button>
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+
+    <div class="col-md-4" *ngFor="let hotel of hotels">
+      <div class="card">
+        <img [src]="hotel.imageUrl" class="card-img-top" [alt]=" hotel.hotelName" [title]="hotel.hotelName">
+        <div class="card-body">
+          <h5 class="card-title">{{ hotel.hotelName }}</h5>
+          <p class="card-text">{{ hotel.description }}</p>
+          <span *ngIf="showBadge" class="badge rounded-pill bg-success">Nouveau</span>
+        </div>
+      </div>
+    </div>
+  </div>
