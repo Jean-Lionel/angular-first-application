@@ -1,5 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { registerLocaleData, } from '@angular/common';
+import localeFr from "@angular/common/locales/fr";
+
+registerLocaleData(localeFr, 'fr');
 
 describe('AppComponent', () => {
   beforeEach(async () => {

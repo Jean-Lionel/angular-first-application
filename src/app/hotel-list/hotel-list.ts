@@ -8,6 +8,7 @@ import { Component } from "@angular/core";
 export class AppHotelListComponent{
   public title: string = 'Hotels List';
   public showBadge: boolean = false;
+  public hotelFilter: string = 'Mot';
 
   public toogleShowBug() {
     this.showBadge = !this.showBadge;
@@ -15,12 +16,12 @@ export class AppHotelListComponent{
 
   public hotels: any[] = [
     {
-      "hotelId": 1,
-      "hotelName": "Buea sweet life",
-      "description": "Belle vue au bord de la mer",
-      "price": 230.5,
-      "imageUrl": "assets/img/hotel-room.jpg",
-      "rating": 3.5
+      hotelId: 1,
+      hotelName: "Buea sweet life",
+      description: "Belle vue au bord de la mer",
+      price: 230.5,
+      imageUrl: "assets/img/hotel-room.jpg",
+      rating: 3.5
     },
     {
       "hotelId": 2,

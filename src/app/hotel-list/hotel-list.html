@@ -1,16 +1,47 @@
 <div class="container">
   <h3 *ngIf="hotels && hotels.length > 0">{{title}}</h3>
-   <button (click)="toogleShowBug()" class="btn btn-primary">{{showBadge ? 'Cacher' : 'Afficher'}}  Nouveau</button>
-  <div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="my-2">
+    <div class="row">
+      <div class="col-md-4">
+        <span>Filter : </span>
+        <b>{{hotelFilter | lowercase}}</b>
+      </div>
+      <div class="col-md-8">
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          [(ngModel)]="hotelFilter"
+        />
+      </div>
+    </div>
+  </div>
+  <button (click)="toogleShowBug()" class="btn btn-primary d-flex">
+    <span class="material-icons">
+      {{showBadge ? "visibility_off" :"visibility"}}
+    </span>
 
+    <span>{{showBadge ? ' Cacher' : ' Afficher'}} Nouveau </span>
+  </button>
+  <div class="row row-cols-1 row-cols-md-2 g-4">
     <div class="col-md-4" *ngFor="let hotel of hotels">
       <div class="card">
-        <img [src]="hotel.imageUrl" class="card-img-top" [alt]=" hotel.hotelName" [title]="hotel.hotelName">
+        <img
+          [src]="hotel.imageUrl"
+          class="card-img-top"
+          [alt]=" hotel.hotelName"
+          [title]="hotel.hotelName | uppercase"
+        />
         <div class="card-body">
-          <h5 class="card-title">{{ hotel.hotelName }}</h5>
+          <h5 class="card-title">{{ hotel.hotelName | uppercase }}</h5>
           <p class="card-text">{{ hotel.description }}</p>
-          <span *ngIf="showBadge" class="badge rounded-pill bg-success">Nouveau</span>
+          <div class="card-text">
+            {{ hotel.price | currency : "EUR" : "symbol" : '1.2-2' }}
+          </div>
+          <span *ngIf="showBadge" class="badge rounded-pill bg-success"
+            >Nouveau</span
+          >
         </div>
       </div>
     </div>
   </div>
+</div>
