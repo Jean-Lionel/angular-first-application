@@ -23,7 +23,7 @@
     <span>{{showBadge ? ' Cacher' : ' Afficher'}} Nouveau </span>
   </button>
   <div class="row row-cols-1 row-cols-md-2 g-4">
-    <div class="col-md-4" *ngFor="let hotel of hotels">
+    <div class="col-md-4" *ngFor="let hotel of filtedList">
       <div class="card">
         <img
           [src]="hotel.imageUrl"
@@ -35,7 +35,8 @@
           <h5 class="card-title">{{ hotel.hotelName | uppercase }}</h5>
           <p class="card-text">{{ hotel.description }}</p>
           <div class="card-text">
-            {{ hotel.price | currency : "EUR" : "symbol" : '1.2-2' }}
+            {{ hotel.price | currency : "EUR" : "symbol" : '1.2-2' |
+            replaceComma }}
           </div>
           <span *ngIf="showBadge" class="badge rounded-pill bg-success"
             >Nouveau</span

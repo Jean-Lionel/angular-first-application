@@ -1,15 +1,28 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { IHotel } from "./hotel";
 
 @Component({
     selector: 'app-hotel-list',
-    templateUrl : "./hotel-list.html",
+  templateUrl: "./hotel-list.html",
+    styleUrls: ["./hotel.css"]
 })
 
-export class AppHotelListComponent{
+export class AppHotelListComponent implements OnInit {
+
+
   public title: string = 'Hotels List';
   public showBadge: boolean = false;
-  public hotelFilter: string = 'Mot';
+  public hotelFilter: string = '';
+  public _filtedList : IHotel[] = [];
+
+   ngOnInit(): void {
+     this._filtedList = this.hotels;
+  }
+
+  public get filtedList(): IHotel[] {
+    let response = this.hotels.filter(e => JSON.stringify(e).toLowerCase().includes(this.hotelFilter.toLowerCase()));
+    return response;
+  }
 
   public toogleShowBug() {
     this.showBadge = !this.showBadge;
@@ -46,14 +59,6 @@ export class AppHotelListComponent{
       "description": "Magnifique cadre pour votre séjour",
       "price": 135.12,
       "imageUrl": "assets/img/window.jpg",
-      "rating": 2.5
-    },
-    {
-      "hotelId": 5,
-      "hotelName": "Random House",
-      "description": "Magnifique cadre pour votre séjour",
-      "price": 135.12,
-      "imageUrl": "https://picsum.photos/200/300",
       "rating": 2.5
     },
   ];
