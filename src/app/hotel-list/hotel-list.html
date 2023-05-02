@@ -22,6 +22,7 @@
 
     <span>{{showBadge ? ' Cacher' : ' Afficher'}} Nouveau </span>
   </button>
+  <div class="alert alert-info" *ngIf="!!messageRating">{{messageRating}}</div>
   <div class="row row-cols-1 row-cols-md-2 g-4">
     <div class="col-md-4" *ngFor="let hotel of filtedList">
       <div class="card">
@@ -41,7 +42,10 @@
           <span *ngIf="showBadge" class="badge rounded-pill bg-success"
             >Nouveau</span
           >
-          <app-start-rating></app-start-rating>
+          <app-start-rating
+            [rating]="hotel.rating"
+            (StartRatingClick)="displayRating($event)"
+          ></app-start-rating>
         </div>
       </div>
     </div>

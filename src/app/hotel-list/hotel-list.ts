@@ -13,7 +13,8 @@ export class AppHotelListComponent implements OnInit {
   public title: string = 'Hotels List';
   public showBadge: boolean = false;
   public hotelFilter: string = '';
-  public _filtedList : IHotel[] = [];
+  public _filtedList: IHotel[] = [];
+  public messageRating: string | undefined;
 
    ngOnInit(): void {
      this._filtedList = this.hotels;
@@ -26,6 +27,10 @@ export class AppHotelListComponent implements OnInit {
 
   public toogleShowBug() {
     this.showBadge = !this.showBadge;
+  }
+
+  public displayRating(message: string) {
+    this.messageRating = message;
   }
 
   public hotels: IHotel[] = [
